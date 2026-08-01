@@ -1,0 +1,50 @@
+Problem Statement: Smart Parking Lot Billing Engine
+Background
+You are building the backend architecture for an automated parking lot system. 
+The lot handles different types of vehicles, and management wants a 
+flexible billing system because pricing rules change frequently.
+
+Core Requirements
+Design a system that satisfies the following conditions:
+
+Vehicle Baseline: The system must support at least two types of vehicles: 
+Car and Bike. Every vehicle must have a license plate string.
+
+Ticketing: When a vehicle enters, the system generates a Ticket. 
+The ticket must store the vehicle information and the entryHour (an integer).
+
+Billing Calculation: When a vehicle exits, the system requires the 
+ticket and the exitHour. It calculates the fee based on the vehicle type:
+
+Bikes: $20 flat fee for the first hour, + $10 for every additional hour.
+
+Cars: $50 flat fee for the first hour, + $30 for every additional hour.
+
+Note: If a vehicle stays for 1 hour or less, they only pay the flat fee.
+
+Lot Manager: A central class (e.g., ParkingGate) that handles vehicles entering and exiting.
+
+Design Constraints
+
+Extensibility (OCP): Management plans to add ElectricCar next month, 
+which gets a 20% discount on the final bill. Your design must allow adding 
+new vehicle types and pricing logic without heavily modifying the ParkingGate 
+or Ticket classes.
+
+Polymorphism: The Ticket shouldn't need to know the exact math for every 
+single vehicle type. It should rely on the vehicle to know its own rate.
+
+Memory Management: Ensure your solution handles memory safely using smart pointers.
+
+Example Execution Flow
+
+[Entry] Bike 'MH-01-AB-1234' entered at hour 10. Ticket issued.
+[Entry] Car 'MH-04-XX-9999' entered at hour 11. Ticket issued.
+
+[Exit] Bike 'MH-01-AB-1234' exiting at hour 13.
+-> Stay duration: 3 hours. 
+-> Total Bill: $40 (20 + 10 + 10).
+
+[Exit] Car 'MH-04-XX-9999' exiting at hour 12.
+-> Stay duration: 1 hour. 
+-> Total Bill: $50 (50).

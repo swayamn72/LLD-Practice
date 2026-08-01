@@ -1,0 +1,106 @@
+You are required to implement an Electronics Store Management System using Object-Oriented Programming in C++.
+
+The store sells different types of electronic products. Every product shares some common properties, while each category has its own additional information.
+
+Base Class: Product
+Data Members
+Product ID
+Product Name
+Price
+Quantity in Stock
+Member Functions
+Constructor
+display()
+calculateInventoryValue()
+addStock(int quantity)
+removeStock(int quantity)
+getProductId()
+Virtual Destructor
+
+display() must be a pure virtual function.
+
+Derived Classes
+Laptop
+
+Additional members
+
+Brand
+RAM (GB)
+Warranty (Years)
+Smartphone
+
+Additional members
+
+Battery Capacity (mAh)
+Camera (MP)
+SmartWatch
+
+Additional members
+
+Water Resistant (bool)
+Strap Material
+
+Each derived class must override display().
+
+Store Class
+
+Create another class called
+
+Store
+
+It should internally store all products.
+
+Use
+
+vector<Product*>
+Member Functions
+1.
+void addProduct(Product*);
+
+Adds a new product.
+
+2.
+void displayAllProducts();
+
+Displays every product.
+
+3.
+void displayProduct(int id);
+
+Displays only the matching product.
+
+If not found
+
+Product Not Found
+4.
+double totalInventoryValue();
+
+Returns
+
+Σ(price × quantity)
+
+for all products.
+
+5.
+void updateStock(int id, int quantity);
+
+Increase stock of the product.
+
+6.
+void sellProduct(int id, int quantity);
+
+Decrease stock.
+
+If stock is insufficient
+
+Not enough stock
+7.
+void removeProduct(int id);
+
+Deletes the product from inventory.
+
+8.
+
+Destructor
+
+Delete all dynamically allocated objects.

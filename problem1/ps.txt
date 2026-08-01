@@ -1,0 +1,49 @@
+Problem Statement: Tactical Shooter Ability Engine
+Background
+You are part of the core gameplay engineering team for a new tactical hero shooter. 
+Your current sprint involves designing the underlying architecture for the game's ability system. 
+Players can choose different characters, each with a unique loadout of 
+abilities bound to specific keyboard keys.
+
+Core Requirements
+Design an ability loadout and execution system that satisfies the following conditions:
+
+Ability Baseline: All abilities have a designated name and a cooldown duration.
+
+Behavioral Variations: The system must currently support two distinct execution behaviors:
+
+Instant Cast: When the player presses the key, the ability executes its effect 
+immediately and goes on cooldown.
+
+Deployable Cast: This is a two-stage ability. When the player presses the key the first time, 
+the item is placed on the map. Pressing the same key a second time reactivates the deployed item, 
+after which it goes on cooldown.
+
+Player Loadout: A player entity must be able to equip abilities to specific character slots 
+(e.g., mapping an ability to the "Q" or "E" key).
+
+Input Handling: The player must have a way to input a keystroke (e.g., pressing "E"). 
+The system should dynamically resolve what that keystroke means based on the equipped 
+ability and its current state.
+
+Design Constraints
+
+Extensibility: The game designers plan to add new types of abilities in the future 
+(e.g., abilities that must be held down to charge). Your design must allow for 
+these new types to be added without modifying the existing Player or core loadout logic.
+
+State Management: The player entity should not need to know the specific state of an ability 
+(e.g., whether a trap is currently deployed or not) to press the key.
+
+Memory Management: Ensure your solution handles memory safely and avoids leaks when player 
+objects are destroyed.
+
+Example Execution Flow
+
+Player equips "Flashbang" (Instant) to 'Q'.
+Player equips "Proximity Mine" (Deployable) to 'E'.
+
+Player presses 'Q' -> System outputs: "Flashbang used instantly!"
+Player presses 'E' -> System outputs: "Proximity Mine placed on the map."
+Player presses 'E' -> System outputs: "Proximity Mine triggered!"
+Player presses 'Q' -> System outputs: "Flashbang is on cooldown."

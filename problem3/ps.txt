@@ -1,0 +1,116 @@
+A company wants to build a simple Inventory Management System to store different types of products.
+
+Every product has the following common attributes:
+
+Product ID
+Product Name
+Price
+Quantity in Stock
+
+Different products have additional information.
+
+Laptop
+In addition to the common attributes, a laptop has:
+Brand
+Warranty (years)
+
+Smartphone
+In addition to the common attributes, a smartphone has:
+Battery Capacity (mAh)
+Book
+
+In addition to the common attributes, a book has:
+Author
+
+Functional Requirements
+Create a class hierarchy to satisfy the following requirements.
+Product Class
+Create a base class named Product.
+
+Functions:
+Constructor
+display()
+getInventoryValue()
+addStock(int qty)
+removeStock(int qty)
+Destructor
+Derived Classes
+
+Create
+
+Laptop
+Smartphone
+Book
+
+Each class should override display().
+
+Inventory Class
+Create another class called Inventory.
+It should internally store all products.
+
+Functions
+addProduct(Product*)
+displayAllProducts()
+displayProduct(int id)
+totalInventoryValue()
+removeProduct(int id)
+
+Sample Input
+Add Laptop
+ID : 101
+Name : MacBook Air
+Price : 95000
+Quantity : 5
+Brand : Apple
+Warranty : 2
+
+Add Smartphone
+ID : 102
+Name : Galaxy S25
+Price : 70000
+Quantity : 4
+Battery : 5000
+
+Add Book
+ID : 103
+Name : Clean Code
+Price : 900
+Quantity : 20
+Author : Robert Martin
+
+Expected Output
+Laptop
+
+ID : 101
+Name : MacBook Air
+Brand : Apple
+Warranty : 2 years
+Price : 95000
+Quantity : 5
+Inventory Value : 475000
+
+---------------------
+
+Smartphone
+
+ID : 102
+Name : Galaxy S25
+Battery : 5000 mAh
+Price : 70000
+Quantity : 4
+Inventory Value : 280000
+
+---------------------
+
+Book
+
+ID : 103
+Name : Clean Code
+Author : Robert Martin
+Price : 900
+Quantity : 20
+Inventory Value : 18000
+
+---------------------
+
+Total Inventory Value : 773000
