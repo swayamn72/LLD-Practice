@@ -1,0 +1,165 @@
+Implement a Task Scheduler for an operating system.
+
+The scheduler manages different kinds of tasks.
+
+Each task has some common information, while different task types have different execution behavior.
+
+Base Class : Task
+Data Members
+Task ID
+Task Name
+Priority
+Estimated Execution Time (milliseconds)
+Member Functions
+virtual void execute() = 0;
+
+virtual void display() const = 0;
+
+int getTaskId() const;
+
+int getPriority() const;
+
+virtual ~Task();
+Derived Classes
+1. CPU Task
+
+Extra Members
+
+Number of Threads
+
+CPU Core Affinity
+
+Execution
+
+Executing CPU Task...
+2. IOTask
+
+Extra Members
+
+Device Name
+
+Data Size (MB)
+
+Execution
+
+Performing IO...
+3. NetworkTask
+
+Extra Members
+
+Destination IP
+
+Port
+
+Execution
+
+Sending Network Packets...
+Scheduler Class
+
+Use
+
+vector<unique_ptr<Task>>
+
+Internally.
+
+Implement the following member functions.
+
+1
+void addTask(unique_ptr<Task>);
+2
+void displayAllTasks() const;
+3
+void executeTask(int taskId);
+
+Find the task.
+
+Call
+
+execute();
+4
+void executeAll();
+
+Execute every task.
+
+5
+void removeTask(int taskId);
+6
+void highestPriorityTask() const;
+
+Display the task having the highest priority.
+
+Assume
+
+Higher number
+
+↓
+
+Higher priority.
+
+7
+double averageExecutionTime() const;
+
+Average execution time of all tasks.
+
+Driver Code
+
+Your code must compile with this driver.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    Scheduler scheduler;
+
+    scheduler.addTask(
+        make_unique<CPUTask>(
+            101,
+            "Physics Simulation",
+            8,
+            120,
+            12,
+            4));
+
+    scheduler.addTask(
+        make_unique<IOTask>(
+            102,
+            "Disk Backup",
+            4,
+            450,
+            "SSD",
+            2048));
+
+    scheduler.addTask(
+        make_unique<NetworkTask>(
+            103,
+            "Send Market Data",
+            10,
+            30,
+            "239.10.10.5",
+            9000));
+
+    cout << "======= TASKS =======\n";
+    scheduler.displayAllTasks();
+
+    cout << "\nExecuting Task 103\n";
+    scheduler.executeTask(103);
+
+    cout << "\nExecuting All Tasks\n";
+    scheduler.executeAll();
+
+    cout << "\nHighest Priority Task\n";
+    scheduler.highestPriorityTask();
+
+    cout << "\nAverage Execution Time : "
+         << scheduler.averageExecutionTime()
+         << " ms\n";
+
+    cout << "\nRemoving Task 102\n";
+    scheduler.removeTask(102);
+
+    cout << "\nRemaining Tasks\n";
+    scheduler.displayAllTasks();
+
+    return 0;
+}
